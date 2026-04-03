@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyless Services | Coming Soon</title>
+    <!-- Modern Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-container">
+        <!-- Generative dynamic particles overlay -->
+        <canvas id="particles-canvas"></canvas>
+    </div>
+    
+    <main class="content-wrapper">
+        <div class="glass-card">
+            <div class="logo-container">
+                <div class="glow-icon">
+                    <!-- Modern Key / Lock minimalist SVG icon -->
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                </div>
+                <h1 class="gradient-text">Keyless Services</h1>
+            </div>
+            
+            <h2>The future of secure access.</h2>
+            <p>We are building a seamless, passwordless experience. Get ready to unlock the next generation of digital security.</p>
+            
+            <div class="countdown" id="countdown">
+                <div class="time-block">
+                    <span class="num" id="days">00</span>
+                    <span class="label">Days</span>
+                </div>
+                <div class="time-block">
+                    <span class="num" id="hours">00</span>
+                    <span class="label">Hours</span>
+                </div>
+                <div class="time-block">
+                    <span class="num" id="minutes">00</span>
+                    <span class="label">Minutes</span>
+                </div>
+                <div class="time-block">
+                    <span class="num" id="seconds">00</span>
+                    <span class="label">Seconds</span>
+                </div>
+            </div>
+
+            <form class="notify-form" id="notify-form">
+                <input type="email" placeholder="Enter your email address" required aria-label="Email address">
+                <button type="submit" class="btn-glow">Notify Me</button>
+            </form>
+
+            <div class="success-message hidden" id="success-message">
+                <p>Thanks! We'll keep you updated.</p>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" aria-label="Twitter">Twitter</a>
+                <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                <a href="#" aria-label="Email">Contact</a>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
