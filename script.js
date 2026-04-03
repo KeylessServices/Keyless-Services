@@ -1,32 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Countdown Logic
-    const countDownDate = new Date();
-    countDownDate.setDate(countDownDate.getDate() + 30); // 30 days from now
-
-    const daysEl = document.getElementById("days");
-    const hoursEl = document.getElementById("hours");
-    const minutesEl = document.getElementById("minutes");
-    const secondsEl = document.getElementById("seconds");
-
-    const updateCountdown = () => {
-        const now = new Date().getTime();
-        const distance = countDownDate - now;
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-        if (distance >= 0) {
-            daysEl.innerText = days.toString().padStart(2, '0');
-            hoursEl.innerText = hours.toString().padStart(2, '0');
-            minutesEl.innerText = minutes.toString().padStart(2, '0');
-            secondsEl.innerText = seconds.toString().padStart(2, '0');
-        }
-    };
-
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
 
     // 2. Form Submission Mock
     const form = document.getElementById('notify-form');
@@ -34,9 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-        // In a real app, you'd send an API request here
         const email = form.querySelector('input').value;
         if(email) {
+            window.location.href = `mailto:Request@Keyless-Services.com?subject=Notify Me&body=Please add me to the mailing list: ${email}`;
             form.classList.add('hidden');
             successMsg.classList.remove('hidden');
         }
