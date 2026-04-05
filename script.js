@@ -4,13 +4,39 @@ document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById('notify-form');
     const successMsg = document.getElementById('success-message');
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const email = form.querySelector('input').value;
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalBtnText = submitBtn.textContent;
+        
         if(email) {
-            window.location.href = `mailto:Request@Keyless-Services.com?subject=Notify Me&body=Please add me to the mailing list: ${email}`;
-            form.classList.add('hidden');
-            successMsg.classList.remove('hidden');
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            try {
+                const response = await fetch("https://formspree.io/f/xaqlaqwy", {
+                    method: "POST",
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ email: email })
+                });
+                
+                if (response.ok) {
+                    form.classList.add('hidden');
+                    successMsg.classList.remove('hidden');
+                } else {
+                    alert("Oops! There was a problem submitting the form. Please try again.");
+                    submitBtn.textContent = originalBtnText;
+                    submitBtn.disabled = false;
+                }
+            } catch (error) {
+                alert("Oops! There was a problem submitting the form. Please check your connection.");
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+            }
         }
     });
 
