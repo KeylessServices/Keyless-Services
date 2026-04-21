@@ -460,10 +460,16 @@ input::placeholder, textarea::placeholder {
     color: rgba(255, 255, 255, 0.2);
 }
 
-input:focus, textarea:focus {
+input:focus, textarea:focus, select:focus {
     border-color: var(--primary-glow);
     box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
     background: rgba(255, 255, 255, 0.1);
+}
+
+select option {
+    background-color: #1a1f35; /* Dark background to match theme */
+    color: var(--primary-glow); /* Cyan text for better contrast */
+    padding: 12px;
 }
 
 /* Force consistency for browser autofill and specific states */
