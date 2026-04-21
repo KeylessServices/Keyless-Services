@@ -149,3 +149,33 @@ if (notifyForm && notifySuccess) {
         }
     });
 }
+
+// Language Switcher Toggle Logic
+document.addEventListener('click', (e) => {
+    const langBtn = e.target.closest('.lang-btn');
+    if (langBtn) {
+        const lang = langBtn.getAttribute('data-lang');
+        localStorage.setItem('preferredLang', lang);
+        
+        const currentPath = window.location.pathname;
+        const isQuotePage = currentPath.includes('quote.html');
+        const isQuoteFrPage = currentPath.includes('quote-fr.html');
+        const isFrPage = currentPath.includes('fr.html') || currentPath.endsWith('/fr');
+        
+        if (lang === 'fr') {
+            if (isQuotePage) {
+                window.location.href = 'quote-fr.html';
+            } else if (!isFrPage && !isQuoteFrPage) {
+                window.location.href = 'fr.html';
+            }
+        } else if (lang === 'en') {
+            if (isQuoteFrPage) {
+                window.location.href = 'quote.html';
+            } else if (isFrPage) {
+                window.location.href = 'index.html';
+            }
+        }
+    }
+});
+
+

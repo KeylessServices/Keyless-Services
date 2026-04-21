@@ -1,57 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <load src="src/modules/head-quote.html" />
+    <load src="src/modules/fr/head-quote.html" />
 </head>
 <body>
     <load src="src/modules/background.html" />
-    <load src="src/modules/switcher-en.html" />
-
+    <load src="src/modules/fr/switcher-fr.html" />
     
     <main class="content-wrapper">
         <div class="glass-card quote-card">
-            <h1 class="gradient-text" style="font-size: 2.5rem; margin-bottom: 24px;">Request a Quote</h1>
-            <p>Fill out the details below and we will get back to you with a quote as soon as possible.</p>
+            <h1 class="gradient-text" style="font-size: 2.5rem; margin-bottom: 24px;">Demander une soumission</h1>
+            <p>Remplissez les détails ci-dessous et nous vous répondrons avec une soumission le plus tôt possible.</p>
             
             <form id="quote-form" action="https://formspree.io/f/mlgoyepw" method="POST" class="quote-form">
                 <!-- Formspree configurations -->
-                <input type="hidden" name="_subject" value="New Quote Request - Keyless Services">
+                <input type="hidden" name="_subject" value="Demande de soumission - Keyless Services">
                 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" name="name" required placeholder="Jean Tremblay">
                     </div>
                     
                     <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required placeholder="john@example.com">
+                        <label for="email">Adresse courriel</label>
+                        <input type="email" id="email" name="email" required placeholder="jean@exemple.com">
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="make">Vehicle Make</label>
-                        <input type="text" id="make" name="make" required placeholder="e.g. Ford, Toyota">
+                        <label for="make">Marque du véhicule</label>
+                        <input type="text" id="make" name="make" required placeholder="ex: Ford, Toyota">
                     </div>
                     
                     <div class="form-group">
-                        <label for="model">Vehicle Model</label>
-                        <input type="text" id="model" name="model" required placeholder="e.g. F-150, Camry">
+                        <label for="model">Modèle du véhicule</label>
+                        <input type="text" id="model" name="model" required placeholder="ex: F-150, Camry">
                     </div>
                     
                     <div class="form-group">
-                        <label for="year">Vehicle Year</label>
-                        <input type="number" id="year" name="year" min="1950" max="2025" required placeholder="e.g. 2018">
+                        <label for="year">Année du véhicule</label>
+                        <input type="number" id="year" name="year" min="1950" max="2025" required placeholder="ex: 2018">
                     </div>
                 </div>
 
                 <div class="form-group full-width">
-                    <label for="comments">Additional Details / Comments</label>
-                    <textarea id="comments" name="comments" rows="4" placeholder="Please describe the service you need (e.g. Lost all keys, need a spare, broken fob)"></textarea>
+                    <label for="comments">Détails supplémentaires / Commentaires</label>
+                    <textarea id="comments" name="comments" rows="4" placeholder="Veuillez décrire le service dont vous avez besoin (ex: Toutes les clés sont perdues, besoin d'un double, télécommande brisée)"></textarea>
                 </div>
 
-                <button type="submit" id="submit-button" class="btn-glow form-submit">Submit Request</button>
+                <button type="submit" id="submit-button" class="btn-glow form-submit">Envoyer la demande</button>
             </form>
 
             <div id="success-message" class="success-message" style="display: none;">
@@ -61,15 +60,15 @@
                         <path d="M7 11V7a5 5 0 0 1 10 0v4" class="lock-shackle"></path>
                     </svg>
                 </div>
-                <h2 class="gradient-text">Success!</h2>
-                <p>We will get back to you shortly.</p>
+                <h2 class="gradient-text">Succès !</h2>
+                <p>Nous vous répondrons sous peu.</p>
                 <div class="redirect-loader"></div>
             </div>
         </div>
 
         <div class="cta-section" style="margin-top: 0;">
             <div class="social-links">
-                <a href="/">Back to Home</a>
+                <a href="fr.html">Retour à l'accueil</a>
             </div>
         </div>
     </main>
@@ -85,7 +84,7 @@
                 e.preventDefault();
                 
                 submitButton.disabled = true;
-                submitButton.innerText = 'Sending...';
+                submitButton.innerText = 'Envoi en cours...';
 
                 const formData = new FormData(form);
                 
@@ -103,18 +102,18 @@
                         successMessage.style.display = 'block';
                         
                         setTimeout(() => {
-                            window.location.href = '/';
+                            window.location.href = 'fr.html';
                         }, 3000);
                     } else {
                         const data = await response.json();
-                        alert(data.errors ? data.errors.map(error => error.message).join(", ") : "Oops! There was a problem submitting your form");
+                        alert(data.errors ? data.errors.map(error => error.message).join(", ") : "Oups ! Il y a eu un problème lors de l'envoi de votre formulaire");
                         submitButton.disabled = false;
-                        submitButton.innerText = 'Submit Request';
+                        submitButton.innerText = 'Envoyer la demande';
                     }
                 } catch (error) {
-                    alert("Oops! There was a problem submitting your form");
+                    alert("Oups ! Il y a eu un problème lors de l'envoi de votre formulaire");
                     submitButton.disabled = false;
-                    submitButton.innerText = 'Submit Request';
+                    submitButton.innerText = 'Envoyer la demande';
                 }
             });
         }

@@ -1,0 +1,32 @@
+<script>
+    (function() {
+        const preferredLang = localStorage.getItem('preferredLang');
+        const browserLang = navigator.language || navigator.userLanguage;
+        const currentPath = window.location.pathname;
+        
+        const isQuotePage = currentPath.includes('quote.html');
+        const isQuoteFrPage = currentPath.includes('quote-fr.html');
+        const isFrPage = currentPath.includes('fr.html') || currentPath.endsWith('/fr');
+        
+        function redirect(target) {
+            window.location.href = target;
+        }
+
+        // If manual preference exists, honor it
+        if (preferredLang) {
+            if (preferredLang === 'fr') {
+                if (isQuotePage) redirect('quote-fr.html');
+                else if (!isFrPage && !isQuoteFrPage) redirect('fr.html');
+            } else if (preferredLang === 'en') {
+                if (isQuoteFrPage) redirect('quote.html');
+                else if (isFrPage) redirect('index.html');
+            }
+        } 
+        // Otherwise, use browser language for first-time visitors
+        else if (browserLang.startsWith('fr')) {
+            if (isQuotePage) redirect('quote-fr.html');
+            else if (!isFrPage && !isQuoteFrPage) redirect('fr.html');
+        }
+    })();
+</script>
+
