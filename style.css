@@ -938,6 +938,21 @@ textarea {
     filter: drop-shadow(0 0 5px var(--primary-glow));
 }
 
+.bilingual-support {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    padding: 2px 16px;
+    margin-top: -4px;
+}
+
+.bilingual-support svg {
+    color: var(--primary-glow);
+    opacity: 0.8;
+}
+
 .hero-subtext {
     width: 100%;
     padding-top: 16px;
